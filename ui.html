@@ -1,0 +1,131 @@
+<div id="sys-float" class="sys-hidden">
+  <div class="sys-float-header" id="sys-float-header">
+    <span class="sys-float-title">SYSTEM</span>
+    <button class="sys-float-close" data-action="float-close">[X]</button>
+  </div>
+
+  <div class="system-toggle-container">
+    <div class="system-layout">
+
+      <!-- Left: Vertical Menu -->
+      <div class="tab-nav-container">
+        <button class="nav-scroll-btn up-btn" data-action="scroll-tab" data-dir="-1"><div class="triangle-up"></div></button>
+        <div class="option-scroll-wrapper" id="tabScrollWrapper">
+          <div class="option-row-vertical">
+            <button class="option-btn-slide" data-action="select-menu" data-menu="status">STATS</button>
+            <button class="option-btn-slide" data-action="select-menu" data-menu="equipment">EQUIP</button>
+            <button class="option-btn-slide" data-action="select-menu" data-menu="skills">SKILL</button>
+            <button class="option-btn-slide" data-action="select-menu" data-menu="inventory">ITEM</button>
+            <button class="option-btn-slide" data-action="select-menu" data-menu="quests">QUEST</button>
+          </div>
+        </div>
+        <button class="nav-scroll-btn down-btn" data-action="scroll-tab" data-dir="1"><div class="triangle-down"></div></button>
+      </div>
+
+      <!-- Right: Info Window -->
+      <div class="system-body" id="systemPanel">
+
+        <div class="system-modal-overlay" id="systemModal">
+          <div class="system-modal-content">
+            <button class="modal-close-btn" data-action="close-modal">[X]</button>
+            <div class="modal-item-title" id="modalTitle"></div>
+            <div class="modal-item-meta" id="modalMeta"></div>
+            <div class="modal-body-wrapper">
+              <div class="modal-item-desc" id="modalDesc"></div>
+              <div class="modal-scroll-col">
+                <button class="triangle-scroll-btn" data-action="scroll-container" data-target="modalDesc" data-dir="-1"><div class="triangle-up"></div></button>
+                <button class="triangle-scroll-btn" data-action="scroll-container" data-target="modalDesc" data-dir="1"><div class="triangle-down"></div></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="status-panel" id="statusPanel">
+          <div class="panel-content-wrapper">
+            <div class="skills-scroll-container" id="scroll-status">
+              <div class="status-card-block">
+                <div class="info-line"><span class="info-label">LEVEL:</span><span class="info-val" id="val-level">N/A</span></div>
+                <div class="info-line"><span class="info-label">EXP:</span><span class="info-val" id="val-exp">N/A</span></div>
+                <div class="info-line"><span class="info-label">JOB:</span><span class="info-val" id="val-job">N/A</span></div>
+                <div class="info-line"><span class="info-label">TITLE:</span><span class="info-val" id="val-title">N/A</span></div>
+              </div>
+              <div class="status-card-block">
+                <div class="info-line"><span class="info-label">HP:</span><span class="info-val" id="val-hp">N/A</span></div>
+                <div class="info-line"><span class="info-label">MP:</span><span class="info-val" id="val-mp">N/A</span></div>
+                <div class="info-line"><span class="info-label">SP:</span><span class="info-val" id="val-sp">N/A</span></div>
+              </div>
+              <div class="status-card-block">
+                <div class="info-line"><span class="info-label">STR:</span><span class="info-val" id="val-str">N/A</span></div>
+                <div class="info-line"><span class="info-label">AGI:</span><span class="info-val" id="val-agi">N/A</span></div>
+                <div class="info-line"><span class="info-label">VIT:</span><span class="info-val" id="val-vit">N/A</span></div>
+                <div class="info-line"><span class="info-label">INT:</span><span class="info-val" id="val-int">N/A</span></div>
+                <div class="info-line"><span class="info-label">PER:</span><span class="info-val" id="val-per">N/A</span></div>
+                <div class="info-line"><span class="info-label">CHA:</span><span class="info-val" id="val-cha">N/A</span></div>
+              </div>
+            </div>
+            <div class="scroll-control-col">
+              <button class="triangle-scroll-btn" data-action="scroll-container" data-target="scroll-status" data-dir="-1"><div class="triangle-up"></div></button>
+              <button class="triangle-scroll-btn" data-action="scroll-container" data-target="scroll-status" data-dir="1"><div class="triangle-down"></div></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="equipment-panel" id="equipmentPanel">
+          <div class="panel-content-wrapper">
+            <div class="skills-scroll-container" id="scroll-equip">
+              <div class="content-block"><div class="skills-section-title">HEAD</div><div class="skills-list" id="equip-head-list"></div></div>
+              <div class="content-block"><div class="skills-section-title">CHEST</div><div class="skills-list" id="equip-chest-list"></div></div>
+              <div class="content-block"><div class="skills-section-title">GLOVES</div><div class="skills-list" id="equip-gloves-list"></div></div>
+              <div class="content-block"><div class="skills-section-title">PANTS</div><div class="skills-list" id="equip-pants-list"></div></div>
+              <div class="content-block"><div class="skills-section-title">SHOES</div><div class="skills-list" id="equip-shoes-list"></div></div>
+              <div class="content-block"><div class="skills-section-title">WEAPON</div><div class="skills-list" id="equip-weapon-list"></div></div>
+            </div>
+            <div class="scroll-control-col">
+              <button class="triangle-scroll-btn" data-action="scroll-container" data-target="scroll-equip" data-dir="-1"><div class="triangle-up"></div></button>
+              <button class="triangle-scroll-btn" data-action="scroll-container" data-target="scroll-equip" data-dir="1"><div class="triangle-down"></div></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="skills-panel" id="skillsPanel">
+          <div class="panel-content-wrapper">
+            <div class="skills-scroll-container" id="scroll-skills">
+              <div class="content-block"><div class="skills-section-title">PASSIVE SKILLS</div><div class="skills-list" id="passiveSkillsList"></div></div>
+              <div class="content-block"><div class="skills-section-title">ACTIVE SKILLS</div><div class="skills-list" id="activeSkillsList"></div></div>
+              <div class="content-block"><div class="skills-section-title">ULTIMATE SKILLS</div><div class="skills-list" id="ultimateSkillsList"></div></div>
+            </div>
+            <div class="scroll-control-col">
+              <button class="triangle-scroll-btn" data-action="scroll-container" data-target="scroll-skills" data-dir="-1"><div class="triangle-up"></div></button>
+              <button class="triangle-scroll-btn" data-action="scroll-container" data-target="scroll-skills" data-dir="1"><div class="triangle-down"></div></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="inventory-panel" id="inventoryPanel">
+          <div class="panel-content-wrapper">
+            <div class="skills-scroll-container" id="scroll-inventory">
+              <div class="content-block"><div class="skills-section-title">INVENTORY</div><div class="skills-list" id="inventoryList"></div></div>
+            </div>
+            <div class="scroll-control-col">
+              <button class="triangle-scroll-btn" data-action="scroll-container" data-target="scroll-inventory" data-dir="-1"><div class="triangle-up"></div></button>
+              <button class="triangle-scroll-btn" data-action="scroll-container" data-target="scroll-inventory" data-dir="1"><div class="triangle-down"></div></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="quests-panel" id="questsPanel">
+          <div class="panel-content-wrapper">
+            <div class="skills-scroll-container" id="scroll-quests">
+              <div class="content-block"><div class="skills-section-title">QUEST LIST</div><div class="skills-list" id="questsList"></div></div>
+            </div>
+            <div class="scroll-control-col">
+              <button class="triangle-scroll-btn" data-action="scroll-container" data-target="scroll-quests" data-dir="-1"><div class="triangle-up"></div></button>
+              <button class="triangle-scroll-btn" data-action="scroll-container" data-target="scroll-quests" data-dir="1"><div class="triangle-down"></div></button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
