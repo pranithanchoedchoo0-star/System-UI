@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&display=swap');
+
+/* ===== ปุ่มเปิด/ปิดหน้าต่าง ===== */
+#sys-float-toggle {
+  position: fixed; right: 12px; bottom: 90px; z-index: 3001;
+  width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+  background: #000; color: #fff; border: 2px solid #fff;
+  box-shadow: 3px 3px 0 #000, -1px -1px 0 #fff;
+  font: 700 11px 'Chakra Petch', sans-serif; cursor: pointer; user-select: none;
+}
+#sys-float-toggle:active { background: #fff; color: #000; }
+
+/* ===== หน้าต่างลอย ===== */
+#sys-float {
+  --bg-main: #0a0a0a;
+  --card-bg: #141414;
+  --border-color: #ffffff;
+  --text-white: #ffffff;
+  --text-gray: #bbbbbb;
+  --font-main: 'Chakra Petch', sans-serif;
+  --panel-h: 244px;
+
+  position: fixed; top: 80px; right: 70px; z-index: 3000;
+  width: min(372px, 96vw);
+  background: var(--bg-main);
+  border: 2px solid var(--border-color);
+  box-shadow: 4px 4px 0 #000, -1px -1px 0 #fff;
+  font-family: var(--font-main); color: var(--text-white);
+}
+#sys-float.sys-hidden { display: none; }
+#sys-float *, #sys-float *::before, #sys-float *::after { box-sizing: border-box; margin: 0; padding: 0; }
+#sys-float button { font-family: var(--font-main); }
+
+#sys-float .sys-float-header {
+  display: flex; justify-content: space-between; align-items: center;
+  height: 26px; padding: 0 8px; background: #000;
+  border-bottom: 2px solid var(--border-color);
+  cursor: move; user-select: none; touch-action: none;
+}
+#sys-float .sys-float-title { font-size: 11px; font-weight: 700; letter-spacing: 1px; }
+#sys-float .sys-float-close { background: none; border: none; color: var(--text-white); font-size: 12px; font-weight: 700; cursor: pointer; }
+
+#sys-float .system-toggle-container { width: 100%; padding: 8px; }
+#sys-float .system-layout { display: flex; align-items: flex-start; gap: 8px; width: 100%; }
+
+/* ===== Vertical Menu ===== */
+#sys-float .tab-nav-container {
+  display: flex; flex-direction: column; width: 64px; height: var(--panel-h); flex-shrink: 0;
+  background: var(--bg-main); border: 2px solid var(--border-color);
+  box-shadow: 3px 3px 0 #000, -1px -1px 0 #fff; overflow: hidden;
+}
+#sys-float .nav-scroll-btn {
+  height: 24px; width: 100%; background: #000; border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0; user-select: none;
+}
+#sys-float .nav-scroll-btn.up-btn { border-bottom: 2px solid var(--border-color); }
+#sys-float .nav-scroll-btn.down-btn { border-top: 2px solid var(--border-color); }
+#sys-float .nav-scroll-btn:active { background: var(--text-white); }
+
+#sys-float .triangle-up { width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-bottom: 7px solid var(--border-color); }
+#sys-float .triangle-down { width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 7px solid var(--border-color); }
+#sys-float .nav-scroll-btn:active .triangle-up, #sys-float .triangle-scroll-btn:active .triangle-up { border-bottom-color: #000; }
+#sys-float .nav-scroll-btn:active .triangle-down, #sys-float .triangle-scroll-btn:active .triangle-down { border-top-color: #000; }
+
+#sys-float .option-scroll-wrapper {
+  flex: 1; min-height: 0; overflow: hidden; scrollbar-width: none; scroll-behavior: smooth;
+  container-type: size; --tab-count: 5;
+}
+#sys-float .option-scroll-wrapper::-webkit-scrollbar { display: none; }
+#sys-float .option-row-vertical { display: flex; flex-direction: column; min-height: 100%; min-height: 100cqh; }
+#sys-float .option-btn-slide {
+  flex: 1 0 auto; width: 100%; min-height: 36px; min-height: calc(100cqh / var(--tab-count));
+  padding: 7px 4px; font-size: 10px; font-weight: 700; background: #000; border: none;
+  border-bottom: 1px solid var(--border-color); color: var(--text-white); cursor: pointer;
+  text-transform: uppercase; text-align: center; overflow-wrap: anywhere; user-select: none;
+}
+#sys-float .option-btn-slide:last-child { border-bottom: none; }
+#sys-float .option-btn-slide:hover { background: #222; }
+#sys-float .option-btn-slide.active { background: var(--text-white); color: #000; }
+
+/* ===== Info Window ===== */
+#sys-float .system-body {
+  display: none; flex: 1; min-width: 0; height: var(--panel-h);
+  border: 2px solid var(--border-color); background: var(--bg-main); position: relative;
+  box-shadow: 3px 3px 0 #000, -1px -1px 0 #fff; overflow: hidden;
+}
+#sys-float .status-panel, #sys-float .equipment-panel, #sys-float .skills-panel,
+#sys-float .inventory-panel, #sys-float .quests-panel { display: none; width: 100%; height: 100%; }
+
+#sys-float .panel-content-wrapper { display: flex; width: 100%; height: 100%; align-items: stretch; position: relative; background: var(--card-bg); }
+#sys-float .skills-scroll-container { flex: 1; min-width: 0; height: 100%; overflow-y: hidden; display: flex; flex-direction: column; gap: 6px; padding: 6px; }
+#sys-float .scroll-control-col { display: flex; flex-direction: column; width: 26px; flex-shrink: 0; align-self: stretch; background: #000; border-left: 2px solid var(--border-color); }
+#sys-float .triangle-scroll-btn { flex: 1; width: 100%; background: transparent; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; user-select: none; }
+#sys-float .triangle-scroll-btn:first-child { border-bottom: 1px solid var(--border-color); }
+#sys-float .triangle-scroll-btn:active { background: var(--text-white); }
+
+#sys-float .status-card-block { display: flex; flex-direction: column; gap: 4px; border: 2px solid var(--border-color); padding: 8px; background: var(--card-bg); width: 100%; flex-shrink: 0; }
+#sys-float .info-line { display: flex; align-items: center; gap: 6px; font-size: 11px; line-height: 1.3; }
+#sys-float .info-label { color: var(--text-gray); font-weight: 500; }
+#sys-float .info-val { color: var(--text-white); font-weight: 700; }
+
+#sys-float .content-block { border: 2px solid var(--border-color); padding: 6px; background: var(--card-bg); display: flex; flex-direction: column; gap: 4px; flex-shrink: 0; }
+#sys-float .skills-section-title { font-size: 10px; font-weight: 700; padding-bottom: 3px; border-bottom: 1px solid var(--border-color); margin-bottom: 3px; text-transform: uppercase; text-align: center; }
+#sys-float .skills-list { display: flex; flex-direction: column; gap: 4px; }
+#sys-float .skill-item-box { display: flex; justify-content: space-between; align-items: center; border: 1.5px solid var(--border-color); background: #000; padding: 6px 8px; cursor: pointer; }
+#sys-float .skill-item-box:hover { background: var(--text-white); color: #000; }
+#sys-float .skill-name { font-size: 11px; font-weight: 700; line-height: 1.2; overflow-wrap: anywhere; }
+
+/* ===== Modal ===== */
+#sys-float .system-modal-overlay { position: absolute; inset: 0; background: rgba(0,0,0,.96); z-index: 100; display: none; justify-content: center; align-items: stretch; }
+#sys-float .system-modal-content { width: 100%; height: 100%; background: var(--bg-main); padding: 8px; position: relative; display: flex; flex-direction: column; gap: 5px; }
+#sys-float .modal-close-btn { position: absolute; top: 4px; right: 6px; background: none; border: none; color: var(--text-white); font-size: 12px; font-weight: 700; cursor: pointer; }
+#sys-float .modal-item-title { font-size: 11px; font-weight: 700; margin-right: 20px; line-height: 1.3; word-break: break-word; }
+#sys-float .modal-item-meta { font-size: 10px; color: var(--text-gray); }
+#sys-float .modal-body-wrapper { display: flex; width: 100%; flex: 1; min-height: 0; position: relative; align-items: stretch; background: #000; border: 2px solid var(--border-color); }
+#sys-float .modal-item-desc { font-size: 10.5px; line-height: 1.4; white-space: pre-wrap; overflow-wrap: break-word; background: #000; padding: 8px; flex: 1; min-width: 0; overflow-y: hidden; color: var(--text-white); }
+#sys-float .modal-scroll-col { display: flex; flex-direction: column; width: 26px; flex-shrink: 0; align-self: stretch; background: #000; border-left: 2px solid var(--border-color); }
